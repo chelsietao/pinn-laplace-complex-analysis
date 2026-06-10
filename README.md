@@ -20,43 +20,29 @@ The central question of this project is:
 
 I start with one of the simplest analytic functions in complex analysis:
 
-$$
-f(z)=z^2
-$$
+$$f(z)=z^2$$
 
 Let
 
-$$
-z=x+iy
-$$
+$$z=x+iy$$
 
 Then
 
-$$
-f(z)=(x+iy)^2=x^2-y^2+i(2xy)
-$$
+$$f(z)=(x+iy)^2=x^2-y^2+i(2xy)$$
 
 So the real and imaginary parts are:
 
-$$
-u(x,y)=x^2-y^2
-$$
+$$u(x,y)=x^2-y^2$$
 
-$$
-v(x,y)=2xy
-$$
+$$v(x,y)=2xy$$
 
 Here, $u(x,y)$ is a harmonic function. This means it satisfies Laplace’s equation:
 
-$$
-\Delta u=u_{xx}+u_{yy}=0
-$$
+$$\Delta u=u_{xx}+u_{yy}=0$$
 
 In this project, I train a PINN, which stands for Physics-Informed Neural Network, to learn the function
 
-$$
-u(x,y)=x^2-y^2.
-$$
+$$u(x,y)=x^2-y^2.$$
 
 ---
 
@@ -64,39 +50,27 @@ $$
 
 In real-variable functions, we usually work with one real variable:
 
-$$
-f(x)
-$$
+$$f(x)$$
 
 In complex analysis, a complex number is written as:
 
-$$
-z=x+iy
-$$
+$$z=x+iy$$
 
 where
 
-$$
-x=\mathrm{Re}(z)
-$$
+$$x=\mathrm{Re}(z)$$
 
 and
 
-$$
-y=\mathrm{Im}(z)
-$$
+$$y=\mathrm{Im}(z)$$
 
 This means that a complex number can be understood as a point on the plane:
 
-$$
-z=(x,y)
-$$
+$$z=(x,y)$$
 
 Therefore, a complex function
 
-$$
-f(z)
-$$
+$$f(z)$$
 
 can be viewed as a function that maps a point in the plane to another complex number.
 
@@ -108,51 +82,35 @@ I choose $f(z)=z^2$ because it is simple, but it still contains a complete compl
 
 Let
 
-$$
-z=x+iy
-$$
+$$z=x+iy$$
 
 Then
 
-$$
-f(z)=z^2=(x+iy)^2
-$$
+$$f(z)=z^2=(x+iy)^2$$
 
 Expanding it gives:
 
-$$
-(x+iy)^2=x^2+2ixy+i^2y^2
-$$
+$$(x+iy)^2=x^2+2ixy+i^2y^2$$
 
 Since
 
-$$
-i^2=-1
-$$
+$$i^2=-1$$
 
 we get:
 
-$$
-f(z)=x^2-y^2+i(2xy)
-$$
+$$f(z)=x^2-y^2+i(2xy)$$
 
 Therefore, it can be written as:
 
-$$
-f(z)=u(x,y)+iv(x,y)
-$$
+$$f(z)=u(x,y)+iv(x,y)$$
 
 where
 
-$$
-u(x,y)=x^2-y^2
-$$
+$$u(x,y)=x^2-y^2$$
 
 and
 
-$$
-v(x,y)=2xy
-$$
+$$v(x,y)=2xy$$
 
 Here, $u$ is the real part and $v$ is the imaginary part.
 
@@ -166,19 +124,13 @@ A very important condition for analytic functions is that their real and imagina
 
 Suppose
 
-$$
-f(z)=u(x,y)+iv(x,y)
-$$
+$$f(z)=u(x,y)+iv(x,y)$$
 
 Then the Cauchy–Riemann equations are:
 
-$$
-u_x=v_y
-$$
+$$u_x=v_y$$
 
-$$
-u_y=-v_x
-$$
+$$u_y=-v_x$$
 
 This means that the real part $u$ and the imaginary part $v$ are not arbitrary functions. Their partial derivatives must satisfy a strict relationship.
 
@@ -188,83 +140,57 @@ This means that the real part $u$ and the imaginary part $v$ are not arbitrary f
 
 I already know that
 
-$$
-u(x,y)=x^2-y^2
-$$
+$$u(x,y)=x^2-y^2$$
 
 and
 
-$$
-v(x,y)=2xy
-$$
+$$v(x,y)=2xy$$
 
 First, I compute the partial derivatives of $u$:
 
-$$
-u_x=2x
-$$
+$$u_x=2x$$
 
-$$
-u_y=-2y
-$$
+$$u_y=-2y$$
 
 Then I compute the partial derivatives of $v$:
 
-$$
-v_x=2y
-$$
+$$v_x=2y$$
 
-$$
-v_y=2x
-$$
+$$v_y=2x$$
 
 Now I check the Cauchy–Riemann equations.
 
 The first equation is:
 
-$$
-u_x=v_y
-$$
+$$u_x=v_y$$
 
 Since
 
-$$
-u_x=2x
-$$
+$$u_x=2x$$
 
 and
 
-$$
-v_y=2x
-$$
+$$v_y=2x$$
 
 the first equation holds.
 
 The second equation is:
 
-$$
-u_y=-v_x
-$$
+$$u_y=-v_x$$
 
 Since
 
-$$
-u_y=-2y
-$$
+$$u_y=-2y$$
 
 and
 
-$$
--v_x=-2y
-$$
+$$-v_x=-2y$$
 
 the second equation also holds.
 
 Therefore,
 
-$$
-f(z)=z^2
-$$
+$$f(z)=z^2$$
 
 is an analytic function.
 
@@ -276,9 +202,7 @@ A harmonic function is a function that satisfies Laplace’s equation.
 
 If a two-variable function $u(x,y)$ satisfies
 
-$$
-\Delta u=u_{xx}+u_{yy}=0
-$$
+$$\Delta u=u_{xx}+u_{yy}=0$$
 
 then it is called harmonic.
 
@@ -294,9 +218,7 @@ Intuitively, Laplace’s equation describes an equilibrium state.
 
 For example, in a steady-state temperature distribution, if there is no heat source and no heat sink, the temperature satisfies:
 
-$$
-u_{xx}+u_{yy}=0
-$$
+$$u_{xx}+u_{yy}=0$$
 
 ---
 
@@ -304,47 +226,31 @@ $$
 
 I compute:
 
-$$
-u(x,y)=x^2-y^2
-$$
+$$u(x,y)=x^2-y^2$$
 
 First, differentiate twice with respect to $x$:
 
-$$
-u_x=2x
-$$
+$$u_x=2x$$
 
-$$
-u_{xx}=2
-$$
+$$u_{xx}=2$$
 
 Then differentiate twice with respect to $y$:
 
-$$
-u_y=-2y
-$$
+$$u_y=-2y$$
 
-$$
-u_{yy}=-2
-$$
+$$u_{yy}=-2$$
 
 Therefore,
 
-$$
-u_{xx}+u_{yy}=2+(-2)=0
-$$
+$$u_{xx}+u_{yy}=2+(-2)=0$$
 
 So
 
-$$
-\Delta u=0
-$$
+$$\Delta u=0$$
 
 This means that
 
-$$
-u(x,y)=x^2-y^2
-$$
+$$u(x,y)=x^2-y^2$$
 
 is a harmonic function.
 
@@ -354,23 +260,17 @@ is a harmonic function.
 
 If
 
-$$
-f(z)=u(x,y)+iv(x,y)
-$$
+$$f(z)=u(x,y)+iv(x,y)$$
 
 is an analytic function, then both $u$ and $v$ are harmonic functions.
 
 That is,
 
-$$
-\Delta u=0
-$$
+$$\Delta u=0$$
 
 and
 
-$$
-\Delta v=0
-$$
+$$\Delta v=0$$
 
 This shows that complex analysis and Laplace’s equation are deeply connected.
 
@@ -384,35 +284,25 @@ This is the most important mathematical idea behind my project:
 
 If $u(x,y)$ and $v(x,y)$ can be combined to form an analytic function
 
-$$
-f(z)=u(x,y)+iv(x,y),
-$$
+$$f(z)=u(x,y)+iv(x,y),$$
 
 then $v$ is called a harmonic conjugate of $u$.
 
 In this example,
 
-$$
-u(x,y)=x^2-y^2
-$$
+$$u(x,y)=x^2-y^2$$
 
 and
 
-$$
-v(x,y)=2xy
-$$
+$$v(x,y)=2xy$$
 
 satisfy the Cauchy–Riemann equations. Therefore,
 
-$$
-v(x,y)=2xy
-$$
+$$v(x,y)=2xy$$
 
 is the harmonic conjugate of
 
-$$
-u(x,y)=x^2-y^2.
-$$
+$$u(x,y)=x^2-y^2.$$
 
 ---
 
@@ -420,9 +310,7 @@ $$
 
 A standard neural network is usually trained with many data points:
 
-$$
-(x_i,y_i) \mapsto u_i
-$$
+$$(x_i,y_i) \mapsto u_i$$
 
 The model learns the relationship between inputs and outputs.
 
@@ -436,9 +324,7 @@ The idea is:
 
 In this project, I require the neural-network solution $\hat{u}_{\theta}(x,y)$ to satisfy:
 
-$$
-\hat{u}*{xx}+\hat{u}*{yy}\approx 0
-$$
+$$\hat{u}*{xx}+\hat{u}*{yy}\approx 0$$
 
 This means that the neural network should approximate a solution to Laplace’s equation.
 
@@ -452,17 +338,13 @@ Interior points are points inside the domain.
 
 For example, in the square domain
 
-$$
-[-1,1]\times[-1,1],
-$$
+$$[-1,1]\times[-1,1],$$
 
 many points are randomly sampled inside the square.
 
 At these points, I require:
 
-$$
-\hat{u}*{xx}(x_i,y_i)+\hat{u}*{yy}(x_i,y_i)\approx 0
-$$
+$$\hat{u}*{xx}(x_i,y_i)+\hat{u}*{yy}(x_i,y_i)\approx 0$$
 
 This means that the neural network is forced to satisfy Laplace’s equation inside the domain.
 
@@ -474,21 +356,15 @@ Boundary points are points on the edge of the domain.
 
 Since I know the exact solution is
 
-$$
-u(x,y)=x^2-y^2,
-$$
+$$u(x,y)=x^2-y^2,$$
 
 I require the neural-network prediction on the boundary to be close to the true value:
 
-$$
-\hat{u}*{\theta}(x_j,y_j)\approx u*{\mathrm{exact}}(x_j,y_j)
-$$
+$$\hat{u}*{\theta}(x_j,y_j)\approx u*{\mathrm{exact}}(x_j,y_j)$$
 
 That is,
 
-$$
-\hat{u}_{\theta}(x_j,y_j)\approx x_j^2-y_j^2
-$$
+$$\hat{u}_{\theta}(x_j,y_j)\approx x_j^2-y_j^2$$
 
 ---
 
@@ -496,14 +372,7 @@ $$
 
 The total loss of a PINN usually has two parts:
 
-$$
-\mathcal{L}_{\mathrm{total}}
-============================
-
-\mathcal{L}*{\mathrm{PDE}}
-+
-\mathcal{L}*{\mathrm{BC}}
-$$
+$$\mathcal{L}*{\mathrm{total}}=\mathcal{L}*{\mathrm{PDE}}+\mathcal{L}_{\mathrm{BC}}$$
 
 Here, $\mathcal{L}_{\mathrm{PDE}}$ is the PDE residual loss. It penalizes the neural network when it does not satisfy Laplace’s equation.
 
@@ -513,22 +382,11 @@ Meanwhile, $\mathcal{L}_{\mathrm{BC}}$ is the boundary condition loss. It penali
 
 ## 11.1 PDE Loss
 
-$$
-\mathcal{L}_{\mathrm{PDE}}
-==========================
-
-\frac{1}{N}
-\sum_{i=1}^{N}
-\left(
-\hat{u}*{xx}(x_i,y_i)+\hat{u}*{yy}(x_i,y_i)
-\right)^2
-$$
+$$\mathcal{L}*{\mathrm{PDE}}=\frac{1}{N}\sum*{i=1}^{N}\left(\hat{u}*{xx}(x_i,y_i)+\hat{u}*{yy}(x_i,y_i)\right)^2$$
 
 This term means that, at every interior point, I compute:
 
-$$
-\hat{u}*{xx}+\hat{u}*{yy}
-$$
+$$\hat{u}*{xx}+\hat{u}*{yy}$$
 
 If this value is not close to 0, the model is penalized.
 
@@ -538,28 +396,15 @@ This is because Laplace’s equation requires it to be 0.
 
 ## 11.2 Boundary Loss
 
-$$
-\mathcal{L}_{\mathrm{BC}}
-=========================
-
-\frac{1}{M}
-\sum_{j=1}^{M}
-\left(
-\hat{u}*{\theta}(x_j,y_j)-u*{\mathrm{exact}}(x_j,y_j)
-\right)^2
-$$
+$$\mathcal{L}*{\mathrm{BC}}=\frac{1}{M}\sum*{j=1}^{M}\left(\hat{u}*{\theta}(x_j,y_j)-u*{\mathrm{exact}}(x_j,y_j)\right)^2$$
 
 This term means that, at every boundary point, I compare
 
-$$
-\hat{u}_{\theta}(x_j,y_j)
-$$
+$$\hat{u}_{\theta}(x_j,y_j)$$
 
 with
 
-$$
-u_{\mathrm{exact}}(x_j,y_j).
-$$
+$$u_{\mathrm{exact}}(x_j,y_j).$$
 
 The larger the difference is, the larger the loss becomes.
 
@@ -583,15 +428,11 @@ In this project, the neural network learns from two constraints.
 
 Inside the domain:
 
-$$
-u_{xx}+u_{yy}=0
-$$
+$$u_{xx}+u_{yy}=0$$
 
 On the boundary:
 
-$$
-u=x^2-y^2
-$$
+$$u=x^2-y^2$$
 
 This is why PINNs are useful for scientific problems governed by differential equations.
 
@@ -601,33 +442,21 @@ This is why PINNs are useful for scientific problems governed by differential eq
 
 In a PINN, I need to compute derivatives of the neural-network output, such as:
 
-$$
-\hat{u}_x
-$$
+$$\hat{u}_x$$
 
-$$
-\hat{u}_{xx}
-$$
+$$\hat{u}_{xx}$$
 
-$$
-\hat{u}_{yy}
-$$
+$$\hat{u}_{yy}$$
 
 These derivatives are not computed by hand. They are computed by automatic differentiation.
 
 Since the neural network itself is a differentiable function, PyTorch can automatically compute:
 
-$$
-\frac{\partial \hat{u}}{\partial x}
-$$
+$$\frac{\partial \hat{u}}{\partial x}$$
 
-$$
-\frac{\partial^2 \hat{u}}{\partial x^2}
-$$
+$$\frac{\partial^2 \hat{u}}{\partial x^2}$$
 
-$$
-\frac{\partial^2 \hat{u}}{\partial y^2}
-$$
+$$\frac{\partial^2 \hat{u}}{\partial y^2}$$
 
 This is the key reason why a PINN can include a PDE inside the loss function.
 
@@ -644,17 +473,11 @@ If the loss decreases, it means that the model is learning to:
 
 Usually, I look at three curves:
 
-$$
-\mathcal{L}_{\mathrm{total}}
-$$
+$$\mathcal{L}_{\mathrm{total}}$$
 
-$$
-\mathcal{L}_{\mathrm{PDE}}
-$$
+$$\mathcal{L}_{\mathrm{PDE}}$$
 
-$$
-\mathcal{L}_{\mathrm{BC}}
-$$
+$$\mathcal{L}_{\mathrm{BC}}$$
 
 If these losses decrease as the number of epochs increases, it indicates that the training is successful.
 
@@ -664,21 +487,15 @@ If these losses decrease as the number of epochs increases, it indicates that th
 
 Since the exact solution in this project is known:
 
-$$
-u_{\mathrm{exact}}(x,y)=x^2-y^2,
-$$
+$$u_{\mathrm{exact}}(x,y)=x^2-y^2,$$
 
 I can directly compare
 
-$$
-\hat{u}_{\theta}(x,y)
-$$
+$$\hat{u}_{\theta}(x,y)$$
 
 with
 
-$$
-u_{\mathrm{exact}}(x,y).
-$$
+$$u_{\mathrm{exact}}(x,y).$$
 
 I can visualize:
 
@@ -688,9 +505,7 @@ I can visualize:
 
 The absolute error is:
 
-$$
-|\hat{u}*{\theta}-u*{\mathrm{exact}}|
-$$
+$$|\hat{u}*{\theta}-u*{\mathrm{exact}}|$$
 
 If the error is small, it means that the PINN has learned the function well.
 
@@ -700,21 +515,15 @@ If the error is small, it means that the PINN has learned the function well.
 
 Two-dimensional plots can sometimes make small differences difficult to see. Therefore, I can take a one-dimensional slice, for example:
 
-$$
-y=0
-$$
+$$y=0$$
 
 On this line,
 
-$$
-u(x,0)=x^2-0^2=x^2
-$$
+$$u(x,0)=x^2-0^2=x^2$$
 
 So the exact solution becomes:
 
-$$
-u(x,0)=x^2
-$$
+$$u(x,0)=x^2$$
 
 Then I plot the PINN prediction and $x^2$ on the same graph.
 
@@ -726,9 +535,7 @@ If the two curves almost overlap, it means that the model predicts well along th
 
 Error analysis studies:
 
-$$
-|\hat{u}*{\theta}(x,y)-u*{\mathrm{exact}}(x,y)|
-$$
+$$|\hat{u}*{\theta}(x,y)-u*{\mathrm{exact}}(x,y)|$$
 
 This tells me where the model performs well and where it performs less accurately.
 
@@ -752,13 +559,9 @@ If the neural network has learned a function that is truly close to the real par
 
 For example:
 
-$$
-u_x=v_y
-$$
+$$u_x=v_y$$
 
-$$
-u_y=-v_x
-$$
+$$u_y=-v_x$$
 
 This means that I am not only doing surface-level curve fitting. I am also checking a deeper mathematical structure.
 
@@ -770,23 +573,17 @@ Domain coloring is a method for visualizing complex functions.
 
 A complex function has a complex output:
 
-$$
-w=f(z)
-$$
+$$w=f(z)$$
 
 A complex number contains two important pieces of information:
 
 1. magnitude:
 
-$$
-|w|
-$$
+$$|w|$$
 
 2. argument:
 
-$$
-\arg(w)
-$$
+$$\arg(w)$$
 
 In domain coloring, hue usually represents the angle $\arg(w)$, while brightness represents the magnitude $|w|$.
 
@@ -796,29 +593,21 @@ In domain coloring, hue usually represents the angle $\arg(w)$, while brightness
 
 A complex number can be written in polar form:
 
-$$
-z=re^{i\theta}
-$$
+$$z=re^{i\theta}$$
 
 Then
 
-$$
-z^2=r^2e^{i2\theta}
-$$
+$$z^2=r^2e^{i2\theta}$$
 
 This shows two things.
 
 First, the radius is squared:
 
-$$
-r\mapsto r^2
-$$
+$$r\mapsto r^2$$
 
 Second, the angle is doubled:
 
-$$
-\theta\mapsto 2\theta
-$$
+$$\theta\mapsto 2\theta$$
 
 Therefore, $f(z)=z^2$ doubles angles in the complex plane. This produces a clear color pattern in the domain-coloring visualization.
 
@@ -830,25 +619,19 @@ In ideal two-dimensional fluid flow, a potential function and a stream function 
 
 In this example,
 
-$$
-\phi(x,y)=x^2-y^2
-$$
+$$\phi(x,y)=x^2-y^2$$
 
 can be interpreted as a velocity potential.
 
 Meanwhile,
 
-$$
-\psi(x,y)=2xy
-$$
+$$\psi(x,y)=2xy$$
 
 can be interpreted as a stream function.
 
 Together, they form:
 
-$$
-f(z)=\phi+i\psi
-$$
+$$f(z)=\phi+i\psi$$
 
 This has the same structure as an analytic function in complex analysis.
 
@@ -860,15 +643,11 @@ For an analytic function, the level curves of the real part $u$ and the level cu
 
 That is,
 
-$$
-u(x,y)=c_1
-$$
+$$u(x,y)=c_1$$
 
 and
 
-$$
-v(x,y)=c_2
-$$
+$$v(x,y)=c_2$$
 
 usually intersect at right angles.
 
@@ -886,53 +665,37 @@ The project can be understood as a complete chain of ideas.
 
 Starting from
 
-$$
-f(z)=z^2,
-$$
+$$f(z)=z^2,$$
 
 I obtain:
 
-$$
-u(x,y)=x^2-y^2
-$$
+$$u(x,y)=x^2-y^2$$
 
 The function $u$ satisfies:
 
-$$
-\Delta u=0
-$$
+$$\Delta u=0$$
 
 Therefore, it is an exact solution of Laplace’s equation.
 
 Next, I train a PINN:
 
-$$
-\hat{u}_{\theta}(x,y)
-$$
+$$\hat{u}_{\theta}(x,y)$$
 
 so that it satisfies:
 
-$$
-\hat{u}*{xx}+\hat{u}*{yy}\approx 0
-$$
+$$\hat{u}*{xx}+\hat{u}*{yy}\approx 0$$
 
 and also matches the boundary condition:
 
-$$
-u=x^2-y^2
-$$
+$$u=x^2-y^2$$
 
 Finally, I compare
 
-$$
-\hat{u}_{\theta}
-$$
+$$\hat{u}_{\theta}$$
 
 with
 
-$$
-u_{\mathrm{exact}}
-$$
+$$u_{\mathrm{exact}}$$
 
 to check whether the error is small.
 
@@ -968,15 +731,11 @@ This project presents a learning path from pure mathematics to AI for Science.
 
 I start from the complex-analysis function
 
-$$
-f(z)=z^2
-$$
+$$f(z)=z^2$$
 
 and obtain a harmonic solution to Laplace’s equation:
 
-$$
-u(x,y)=x^2-y^2
-$$
+$$u(x,y)=x^2-y^2$$
 
 Then I use a PINN to learn this solution and use error analysis to compare the neural-network prediction with the exact solution.
 
