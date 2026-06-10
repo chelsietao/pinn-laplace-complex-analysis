@@ -77,13 +77,13 @@ $$
 where
 
 $$
-x=\operatorname{Re}(z)
+x=\mathrm{Re}(z)
 $$
 
 and
 
 $$
-y=\operatorname{Im}(z)
+y=\mathrm{Im}(z)
 $$
 
 This means that a complex number can be understood as a point on the plane:
@@ -428,17 +428,13 @@ The model learns the relationship between inputs and outputs.
 
 However, a PINN does not rely only on data. It also puts the governing equation into the loss function.
 
-PINN stands for:
-
-$$
-\text{Physics-Informed Neural Network}
-$$
+PINN stands for Physics-Informed Neural Network.
 
 The idea is:
 
 > The neural network should not simply guess the answer. It should also obey a physical or mathematical law.
 
-In this project, I require the neural-network solution $\hat{u}_\theta(x,y)$ to satisfy:
+In this project, I require the neural-network solution $\hat{u}_{\theta}(x,y)$ to satisfy:
 
 $$
 \hat{u}*{xx}+\hat{u}*{yy}\approx 0
@@ -485,13 +481,13 @@ $$
 I require the neural-network prediction on the boundary to be close to the true value:
 
 $$
-\hat{u}*\theta(x_j,y_j)\approx u*{\text{exact}}(x_j,y_j)
+\hat{u}*{\theta}(x_j,y_j)\approx u*{\mathrm{exact}}(x_j,y_j)
 $$
 
 That is,
 
 $$
-\hat{u}_\theta(x_j,y_j)\approx x_j^2-y_j^2
+\hat{u}_{\theta}(x_j,y_j)\approx x_j^2-y_j^2
 $$
 
 ---
@@ -501,37 +497,25 @@ $$
 The total loss of a PINN usually has two parts:
 
 $$
-\mathcal{L}_{\text{total}}
-==========================
+\mathcal{L}_{\mathrm{total}}
+============================
 
-\mathcal{L}*{\text{PDE}}
+\mathcal{L}*{\mathrm{PDE}}
 +
-\mathcal{L}*{\text{BC}}
+\mathcal{L}*{\mathrm{BC}}
 $$
 
-Here,
+Here, $\mathcal{L}_{\mathrm{PDE}}$ is the PDE residual loss. It penalizes the neural network when it does not satisfy Laplace’s equation.
 
-$$
-\mathcal{L}_{\text{PDE}}
-$$
-
-is the PDE residual loss. It penalizes the neural network when it does not satisfy Laplace’s equation.
-
-Meanwhile,
-
-$$
-\mathcal{L}_{\text{BC}}
-$$
-
-is the boundary condition loss. It penalizes the neural network when it does not match the exact boundary values.
+Meanwhile, $\mathcal{L}_{\mathrm{BC}}$ is the boundary condition loss. It penalizes the neural network when it does not match the exact boundary values.
 
 ---
 
 ## 11.1 PDE Loss
 
 $$
-\mathcal{L}_{\text{PDE}}
-========================
+\mathcal{L}_{\mathrm{PDE}}
+==========================
 
 \frac{1}{N}
 \sum_{i=1}^{N}
@@ -555,13 +539,13 @@ This is because Laplace’s equation requires it to be 0.
 ## 11.2 Boundary Loss
 
 $$
-\mathcal{L}_{\text{BC}}
-=======================
+\mathcal{L}_{\mathrm{BC}}
+=========================
 
 \frac{1}{M}
 \sum_{j=1}^{M}
 \left(
-\hat{u}*{\theta}(x_j,y_j)-u*{\text{exact}}(x_j,y_j)
+\hat{u}*{\theta}(x_j,y_j)-u*{\mathrm{exact}}(x_j,y_j)
 \right)^2
 $$
 
@@ -574,7 +558,7 @@ $$
 with
 
 $$
-u_{\text{exact}}(x_j,y_j).
+u_{\mathrm{exact}}(x_j,y_j).
 $$
 
 The larger the difference is, the larger the loss becomes.
@@ -661,15 +645,15 @@ If the loss decreases, it means that the model is learning to:
 Usually, I look at three curves:
 
 $$
-\mathcal{L}_{\text{total}}
+\mathcal{L}_{\mathrm{total}}
 $$
 
 $$
-\mathcal{L}_{\text{PDE}}
+\mathcal{L}_{\mathrm{PDE}}
 $$
 
 $$
-\mathcal{L}_{\text{BC}}
+\mathcal{L}_{\mathrm{BC}}
 $$
 
 If these losses decrease as the number of epochs increases, it indicates that the training is successful.
@@ -681,19 +665,19 @@ If these losses decrease as the number of epochs increases, it indicates that th
 Since the exact solution in this project is known:
 
 $$
-u_{\text{exact}}(x,y)=x^2-y^2,
+u_{\mathrm{exact}}(x,y)=x^2-y^2,
 $$
 
 I can directly compare
 
 $$
-\hat{u}_\theta(x,y)
+\hat{u}_{\theta}(x,y)
 $$
 
 with
 
 $$
-u_{\text{exact}}(x,y).
+u_{\mathrm{exact}}(x,y).
 $$
 
 I can visualize:
@@ -705,7 +689,7 @@ I can visualize:
 The absolute error is:
 
 $$
-|\hat{u}*\theta-u*{\text{exact}}|
+|\hat{u}*{\theta}-u*{\mathrm{exact}}|
 $$
 
 If the error is small, it means that the PINN has learned the function well.
@@ -743,7 +727,7 @@ If the two curves almost overlap, it means that the model predicts well along th
 Error analysis studies:
 
 $$
-|\hat{u}*\theta(x,y)-u*{\text{exact}}(x,y)|
+|\hat{u}*{\theta}(x,y)-u*{\mathrm{exact}}(x,y)|
 $$
 
 This tells me where the model performs well and where it performs less accurately.
@@ -923,7 +907,7 @@ Therefore, it is an exact solution of Laplace’s equation.
 Next, I train a PINN:
 
 $$
-\hat{u}_\theta(x,y)
+\hat{u}_{\theta}(x,y)
 $$
 
 so that it satisfies:
@@ -941,13 +925,13 @@ $$
 Finally, I compare
 
 $$
-\hat{u}_\theta
+\hat{u}_{\theta}
 $$
 
 with
 
 $$
-u_{\text{exact}}
+u_{\mathrm{exact}}
 $$
 
 to check whether the error is small.
