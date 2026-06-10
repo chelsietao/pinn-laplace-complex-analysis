@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(85, 214, 255, 0.16), transparent 34rem),
+    radial-gradient(circle at 86% 22%, rgba(255, 122, 112, 0.13), transparent 30rem),
+    #08111f;
+  color: #ecf6ff;
+}
+
+p {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.complex-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.formula {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.math-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.35rem 0;
+  color: #f8fbff;
+}
+
+.math-scroll .katex-display {
+  margin: 0;
+}
+
+.math-scroll .katex {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+}
+
+.math-compact .katex {
+  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
+}
+
+.math-inline {
+  color: #f8fbff;
+  white-space: nowrap;
+}
+
+.math-inline .katex {
+  font-size: 1.03em;
+}
+
+.section-anchor {
+  scroll-margin-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
